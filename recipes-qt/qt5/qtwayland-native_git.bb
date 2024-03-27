@@ -2,7 +2,7 @@ require qt5-native.inc
 require qt5-git.inc
 
 # There are no LGPLv3-only licensed files in this component.
-LICENSE = "BSD & (LGPL-2.1 & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0)"
+LICENSE = "BSD-3-Clause & (LGPL-2.1-only & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0-only)"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=4bfd28363f541b10d9f024181b8df516 \
     file://LICENSE.LGPLv3;md5=e0459b45c5c4840b353141a8bbed91f0 \

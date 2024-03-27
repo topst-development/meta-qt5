@@ -1,7 +1,7 @@
 SUMMARY = "Qt5 smarthome QML demo application"
 DESCRIPTION = "This is the Smarthome QML demo application. It shows some user interfaces for controlling an automated house"
 HOMEPAGE = "http://www.basyskom.com/news/143-demos-qt5-port.html"
-LICENSE = "LGPLv2.1+ & GFDL-1.2"
+LICENSE = "LGPL-2.1-or-later & GFDL-1.2"
 LIC_FILES_CHKSUM = "file://COPYING.DOC;md5=ad1419ecc56e060eccf8184a87c4285f \
                     file://COPYING.LIB;md5=2d5025d4aa3495befef8f17206a5b0a1"
 
@@ -22,7 +22,7 @@ do_install() {
     cp -R --no-dereference --preserve=mode,links ${S}/components ${D}${datadir}/${P}
 }
 
-FILES_${PN}-dbg += "${datadir}/${P}/.debug"
-FILES_${PN} += "${datadir}"
+FILES:${PN}-dbg += "${datadir}/${P}/.debug"
+FILES:${PN} += "${datadir}"
 
-RDEPENDS_${PN} = "qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"
+RDEPENDS:${PN} = "qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"

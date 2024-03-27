@@ -3,7 +3,7 @@ It uses the integrated pointer feature to create a smooth conversion from \
 the host pointer to touchscreen events in the guest, without grabbing the \
 host pointer."
 SUMMARY = "Touchscreen driver for integrated mouse pointer in VirtualBox"
-LICENSE = "LGPL-2.1 & GPL-3.0"
+LICENSE = "LGPL-2.1-only & GPL-3.0-only"
 LIC_FILES_CHKSUM = " \
     file://vboxtouch.cpp;beginline=1;endline=22;md5=ca51db8f7c0606c77f702dcee4cf31d9 \
     file://evdevmousehandler.cpp;beginline=1;endline=40;md5=9081062f6e7f74b6e62ad7ecee4a71be \
@@ -22,6 +22,6 @@ S = "${WORKDIR}/git/vboxtouch"
 
 inherit qmake5
 
-FILES_${PN} += "${OE_QMAKE_PATH_PLUGINS}/generic/libvboxtouchplugin.so"
-FILES_${PN}-dbg += "${OE_QMAKE_PATH_PLUGINS}/generic/.debug/"
-FILES_${PN}-dev += "${OE_QMAKE_PATH_LIBS}/cmake/*"
+FILES:${PN} += "${OE_QMAKE_PATH_PLUGINS}/generic/libvboxtouchplugin.so"
+FILES:${PN}-dbg += "${OE_QMAKE_PATH_PLUGINS}/generic/.debug/"
+FILES:${PN}-dev += "${OE_QMAKE_PATH_LIBS}/cmake/*"

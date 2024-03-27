@@ -1,7 +1,7 @@
 require qt5.inc
 require qt5-git.inc
 
-LICENSE = "GFDL-1.3 & LGPL-2.1 | GPL-3.0"
+LICENSE = "GFDL-1.3 & LGPL-2.1-only | GPL-3.0-only"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=4193e7f1d47a858f6b7c0f1ee66161de \
     file://LICENSE.GPLv3;md5=d32239bcb673463ab874e80d47fae504 \
@@ -18,12 +18,12 @@ PACKAGECONFIG[bluez] = "CONFIG+=OE_BLUEZ_ENABLED,,${BLUEZ}"
 
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
-do_configure_prepend() {
+do_configure:prepend() {
     # disable bluez test if it isn't enabled by PACKAGECONFIG
     sed -i 's/^    qtCompileTest(bluez)/    OE_BLUEZ_ENABLED:qtCompileTest(bluez)/g' ${S}/qtsystems.pro
 }
 
-do_install_append() {
+do_install:append() {
     # Remove example.pro file as it is useless
     rm -f ${D}${OE_QMAKE_PATH_EXAMPLES}/examples.pro	
 }

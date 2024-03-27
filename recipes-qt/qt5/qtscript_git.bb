@@ -3,7 +3,7 @@ require qt5-git.inc
 
 # There are no LGPLv3-only licensed files in this component.
 # Note that some files are LGPL-2.1 only without The-Qt-Company-Qt-LGPL-Exception-1.1.
-LICENSE = "GFDL-1.3 & BSD & (LGPL-2.1 & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0)"
+LICENSE = "GFDL-1.3 & BSD-3-Clause & (LGPL-2.1-only & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0-only)"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=4bfd28363f541b10d9f024181b8df516 \
     file://LICENSE.LGPLv3;md5=e0459b45c5c4840b353141a8bbed91f0 \
@@ -22,8 +22,8 @@ LIC_FILES_CHKSUM = " \
 #{standard input}:23: Error: selected processor does not support Thumb mode `stmdb sp!,{r4-r8,lr}'
 #{standard input}:30: Error: lo register required -- `ldmia sp!,{r4-r8,lr}'
 #{standard input}:43: Error: lo register required -- `ldmia sp!,{r4-r8,lr}'
-ARM_INSTRUCTION_SET_armv4 = "arm"
-ARM_INSTRUCTION_SET_armv5 = "arm"
+ARM_INSTRUCTION_SET:armv4 = "arm"
+ARM_INSTRUCTION_SET:armv5 = "arm"
 
 DEPENDS += "qtbase"
 

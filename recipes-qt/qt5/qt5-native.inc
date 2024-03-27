@@ -1,4 +1,4 @@
-inherit native qmake5_base
+inherit qmake5_base pkgconfig native
 
 # we don't want conflicts with qt4
 OE_QMAKE_PATH_HEADERS = "${OE_QMAKE_PATH_QT_HEADERS}"
@@ -13,7 +13,7 @@ OE_QMAKE_PATH_TESTS = "${OE_QMAKE_PATH_QT_TESTS}"
 
 # Regenerate header files when they are included in source tarball
 # Otherwise cmake files don't set PRIVATE_HEADERS correctly
-do_configure_prepend() {
+do_configure:prepend() {
     rm -rf ${S}/include
     mkdir -p ${S}/.git || true
 }

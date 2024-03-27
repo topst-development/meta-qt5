@@ -1,7 +1,7 @@
 require qt5.inc
 require qt5-git.inc
 
-LICENSE = "GFDL-1.3 & BSD & (LGPL-2.1 & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0)"
+LICENSE = "GFDL-1.3 & BSD-3-Clause & (LGPL-2.1-only & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0-only)"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=fb91571854638f10b2e5f36562661a5a \
     file://LICENSE.LGPLv3;md5=a909b94c1c9674b2aa15ff03a86f518a \
@@ -19,12 +19,12 @@ SRC_URI += " \
     file://0004-linguist-tools-cmake-allow-overriding-the-location-f.patch \
 "
 
-FILES_${PN}-tools += "${datadir}${QT_DIR_NAME}/phrasebooks"
-FILES_${PN}-examples = "${datadir}${QT_DIR_NAME}/examples"
+FILES:${PN}-tools += "${datadir}${QT_DIR_NAME}/phrasebooks"
+FILES:${PN}-examples = "${datadir}${QT_DIR_NAME}/examples"
 
 PACKAGECONFIG ??= ""
-PACKAGECONFIG_class-native ??= "linguistonly"
-PACKAGECONFIG_class-nativesdk ??= "linguistonly"
+PACKAGECONFIG:class-native ??= "linguistonly"
+PACKAGECONFIG:class-nativesdk ??= "linguistonly"
 PACKAGECONFIG[linguistonly] = ""
 PACKAGECONFIG[qtwebkit] = ",,qtwebkit"
 

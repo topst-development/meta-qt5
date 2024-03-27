@@ -2,7 +2,7 @@ DESCRIPTION = "Native version of Qt/[X11|Mac|Embedded]"
 DEPENDS = "zlib-native dbus-native"
 SECTION = "libs"
 HOMEPAGE = "http://qt-project.org"
-LICENSE = "GFDL-1.3 & BSD & (LGPL-2.1 & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0)"
+LICENSE = "GFDL-1.3 & BSD-3-Clause & (LGPL-2.1-only & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0-only)"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=fb91571854638f10b2e5f36562661a5a \
     file://LICENSE.LGPLv3;md5=a909b94c1c9674b2aa15ff03a86f518a \
@@ -41,6 +41,7 @@ do_generate_qt_config_file() {
 
 PACKAGECONFIG_CONFARGS = " \
     -sysroot ${STAGING_DIR_NATIVE} \
+	-qt-pcre \
     -no-gcc-sysroot \
     -system-zlib \
     -no-libjpeg \
@@ -89,7 +90,7 @@ export OE_QMAKE_LDFLAGS
 export OE_QMAKE_AR
 export OE_QMAKE_STRIP
 
-do_configure_prepend() {
+do_configure:prepend() {
     MAKEFLAGS="${PARALLEL_MAKE}" ${S}/configure -opensource -confirm-license ${PACKAGECONFIG_CONFARGS} || die "Configuring qt failed. PACKAGECONFIG_CONFARGS was ${PACKAGECONFIG_CONFARGS}"
     bin/qmake ${OE_QMAKE_DEBUG_OUTPUT} ${S} -o Makefile || die "Configuring qt with qmake failed. PACKAGECONFIG_CONFARGS was ${PACKAGECONFIG_CONFARGS}"
 }

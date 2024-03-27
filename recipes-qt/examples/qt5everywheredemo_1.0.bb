@@ -1,7 +1,7 @@
 SUMMARY = "Qt5 everywhere demo"
 DESCRIPTION = "Quick tour of Qt 5.0, primarily focusing on its graphical capabilities."
 HOMEPAGE = "https://qt.gitorious.org/qt-labs"
-LICENSE = "LGPLv2.1"
+LICENSE = "LGPL-2.1-only"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=1187cb795a0f96bce64e63dd1a67dc2b"
 
 DEPENDS = "qtdeclarative qtgraphicaleffects"
@@ -19,7 +19,7 @@ do_install() {
     cp -R --no-dereference --preserve=mode,links ${S}/qml ${D}${datadir}/${P}
 }
 
-FILES_${PN}-dbg += "${datadir}/${P}/.debug"
-FILES_${PN} += "${datadir}"
+FILES:${PN}-dbg += "${datadir}/${P}/.debug"
+FILES:${PN} += "${datadir}"
 
-RDEPENDS_${PN} = "qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"
+RDEPENDS:${PN} = "qtdeclarative-qmlplugins qtgraphicaleffects-qmlplugins"

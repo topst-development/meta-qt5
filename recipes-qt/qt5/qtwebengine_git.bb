@@ -1,6 +1,6 @@
 SUMMARY = "QtWebEngine combines the power of Chromium and Qt"
 
-LICENSE = "LGPL-3.0 & BSD"
+LICENSE = "LGPL-3.0-only & BSD-3-Clause"
 LIC_FILES_CHKSUM = " \
     file://src/core/browser_context_qt.cpp;md5=8b5dcd02451f832169d229afb56f27fd;beginline=1;endline=35 \
     file://src/3rdparty/chromium/LICENSE;md5=0fca02217a5d49a14dfe2d11837bb34d \
@@ -42,11 +42,11 @@ PACKAGECONFIG[vpx] = "WEBENGINE_CONFIG+=use_system_vpx,,libvpx"
 EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
 COMPATIBLE_MACHINE = "(-)"
-COMPATIBLE_MACHINE_x86 = "(.*)"
-COMPATIBLE_MACHINE_x86-64 = "(.*)"
-COMPATIBLE_MACHINE_armv6 = "(.*)"
-COMPATIBLE_MACHINE_armv7a = "(.*)"
-COMPATIBLE_MACHINE_armv7ve = "(.*)"
+COMPATIBLE_MACHINE:x86 = "(.*)"
+COMPATIBLE_MACHINE:x86-64 = "(.*)"
+COMPATIBLE_MACHINE:armv6 = "(.*)"
+COMPATIBLE_MACHINE:armv7a = "(.*)"
+COMPATIBLE_MACHINE:armv7ve = "(.*)"
 
 inherit qmake5
 inherit gettext
@@ -90,16 +90,16 @@ do_configure() {
         -after ${EXTRA_QMAKEVARS_POST}
 }
 
-do_install_append() {
+do_install:append() {
     rmdir ${D}${OE_QMAKE_PATH_PLUGINS}/${BPN} ${D}${OE_QMAKE_PATH_PLUGINS} || true
     sed -i 's@ -Wl,--start-group.*-Wl,--end-group@@g; s@-L${B}[^ ]* @ @g' ${D}${libdir}/pkgconfig/Qt5WebEngineCore.pc
 }
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
 # for /usr/share/qt5/qtwebengine_resources.pak
-FILES_${PN} += "${OE_QMAKE_PATH_QT_TRANSLATIONS} ${OE_QMAKE_PATH_QT_DATA}"
+FILES:${PN} += "${OE_QMAKE_PATH_QT_TRANSLATIONS} ${OE_QMAKE_PATH_QT_DATA}"
 
-RDEPENDS_${PN}-examples += " \
+RDEPENDS:${PN}-examples += " \
     ${PN}-qmlplugins \
     qtquickcontrols-qmlplugins \
     qtdeclarative-qmlplugins \
@@ -118,15 +118,15 @@ SRC_URI += " \
     file://0002-chromium-Change-false-to-FALSE-and-1-to-TRUE-FIX-qtw.patch \
 "
 
-SRCREV_qtwebengine = "fad625e0ba39e855817bbf206ab9a846d07aeeec"
+SRCREV:qtwebengine = "fad625e0ba39e855817bbf206ab9a846d07aeeec"
 # This is in git submodule, but we're using latest in 45-based
 # SRCREV_chromium = "79930a541473b2e0f950d040c16ab6f22e4aeef3"
-SRCREV_chromium = "cb094c05c5f06489fa64412e7f5d9e194a3f9495"
+SRCREV:chromium = "cb094c05c5f06489fa64412e7f5d9e194a3f9495"
 SRCREV = "${SRCREV_qtwebengine}"
 
-SRCREV_FORMAT = "qtwebengine_chromium"
+SRCREV:FORMAT = "qtwebengine_chromium"
 
 S = "${WORKDIR}/git"
 
 # WARNING: qtwebengine-5.5.99+5.6.0-rc+gitAUTOINC+3f02c25de4_779a2388fc-r0 do_package_qa: QA Issue: ELF binary '/OE/build/oe-core/tmp-glibc/work/i586-oe-linux/qtwebengine/5.5.99+5.6.0-rc+gitAUTOINC+3f02c25de4_779a2388fc-r0/packages-split/qtwebengine/usr/lib/libQt5WebEngineCore.so.5.6.0' has relocations in .text [textrel]
-INSANE_SKIP_${PN} += "textrel"
+INSANE_SKIP:${PN} += "textrel"

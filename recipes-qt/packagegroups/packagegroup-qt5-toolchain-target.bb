@@ -3,6 +3,7 @@
 DESCRIPTION = "Target packages for Qt5 SDK"
 LICENSE = "MIT"
 
+PACKAGE_ARCH = "${TUNE_PKGARCH}"
 inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
@@ -31,7 +32,7 @@ USE_X11 = " \
     qtx11extras-mkspecs \
 "
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     packagegroup-core-standalone-sdk-target \
     libsqlite3-dev \
     ${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'qt3d-dev', '', d)} \
@@ -105,7 +106,7 @@ RDEPENDS_${PN} += " \
     qttranslations-qtxmlpatterns \
 "
 
-RRECOMMENDS_${PN} += " \
+RRECOMMENDS:${PN} += " \
     qtquickcontrols-qmlplugins \
     qttools-plugins \
 "

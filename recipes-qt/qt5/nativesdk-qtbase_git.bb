@@ -3,7 +3,7 @@ DEPENDS = "nativesdk-zlib qtbase-native"
 SECTION = "libs"
 HOMEPAGE = "http://qt-project.org"
 
-LICENSE = "GFDL-1.3 & BSD & (LGPL-2.1 & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0)"
+LICENSE = "GFDL-1.3 & BSD-3-Clause & (LGPL-2.1-only & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0-only)"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=fb91571854638f10b2e5f36562661a5a \
     file://LICENSE.LGPLv3;md5=a909b94c1c9674b2aa15ff03a86f518a \
@@ -46,7 +46,7 @@ PACKAGES = "${PN}-tools-dbg ${PN}-tools-dev ${PN}-tools-staticdev ${PN}-tools"
 
 PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
 
-FILES_${PN}-tools-dev = " \
+FILES:${PN}-tools-dev = " \
     ${includedir} \
     ${FILES_SOLIBSDEV} ${libdir}/*.la \
     ${libdir}/*.prl \
@@ -54,16 +54,16 @@ FILES_${PN}-tools-dev = " \
     ${OE_QMAKE_PATH_LIBS}/*.prl \
 "
 
-FILES_${PN}-tools-staticdev = " \
+FILES:${PN}-tools-staticdev = " \
     ${OE_QMAKE_PATH_LIBS}/*.a \
 "
 
-FILES_${PN}-tools-dbg = " \
+FILES:${PN}-tools-dbg = " \
     ${libdir}/.debug \
     ${OE_QMAKE_PATH_BINS}/.debug \
 "
 
-FILES_${PN}-tools = " \
+FILES:${PN}-tools = " \
     ${libdir}/lib*${SOLIBS} \
     ${OE_QMAKE_PATH_BINS}/* \
     ${SDKPATHNATIVE}/environment-setup.d \
@@ -74,7 +74,7 @@ FILES_${PN}-tools = " \
 # collisions with qt4. This would trigger debian.bbclass to rename the
 # package, since it doesn't detect binaries in subdirs. Explicitly
 # disable package auto-renaming for the tools-package.
-DEBIAN_NOAUTONAME_${PN}-tools = "1"
+DEBIAN_NOAUTONAME:${PN}-tools = "1"
 
 QT_CONFIG_FLAGS += " \
     -shared \
@@ -117,7 +117,7 @@ Sysroot =
 EOF
 }
 
-do_generate_qt_config_file_append() {
+do_generate_qt_config_file:append() {
     cat >> ${OE_QMAKE_QTCONF_PATH} <<EOF
 
 [EffectivePaths]

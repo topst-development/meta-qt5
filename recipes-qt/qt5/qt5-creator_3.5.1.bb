@@ -7,7 +7,7 @@ SUMMARY = "Qt Creator is a new cross-platform Qt IDE"
 # 'System GDB at /usr/bin/gdb.
 
 HOMEPAGE = "https://qt-project.org/"
-LICENSE = "LGPLv2.1 | GPLv3"
+LICENSE = "LGPL-2.1-only | GPL-3.0-only"
 LIC_FILES_CHKSUM = " \
     file://LGPL_EXCEPTION.TXT;md5=f4748b0d1a72c5c8fb5dab2dd1f7fa46 \
     file://LICENSE.LGPLv21;md5=825920de5f6db2eeb1bebe625476346d \
@@ -30,7 +30,7 @@ S = "${WORKDIR}/qt-creator-opensource-src-${PV}"
 
 EXTRA_QMAKEVARS_PRE += "IDE_LIBRARY_BASENAME=${baselib}${QT_DIR_NAME}"
 
-do_configure_append() {
+do_configure:append() {
     # Find native tools
     sed -i 's:${STAGING_BINDIR}.*/lrelease:${STAGING_BINDIR_NATIVE}${QT_DIR_NAME}/lrelease:g' ${B}/share/qtcreator/translations/Makefile
     sed -i 's:${STAGING_BINDIR}.*/qdoc:${STAGING_BINDIR_NATIVE}${QT_DIR_NAME}/qdoc:g' ${B}/Makefile
@@ -39,7 +39,7 @@ do_configure_append() {
     # sed -i 's:QT_INSTALL_DOCS=${docdir}:QT_INSTALL_DOCS=${STAGING_DATADIR_NATIVE}${QT_DIR_NAME}/doc:g' ${B}/Makefile
 }
 
-do_compile_append() {
+do_compile:append() {
     # build docs
     #oe_runmake docs_online
 }
@@ -53,27 +53,27 @@ do_install() {
     sed -i 's:@QT5_QMAKE@:${bindir}${QT_DIR_NAME}:g' ${D}${datadir}/applications/qtcreator.desktop
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${datadir}/qtcreator \
     ${datadir}/icons \
     ${libdir}${QT_DIR_NAME}/qtcreator \
 "
-FILES_${PN}-dbg += " \
+FILES:${PN}-dbg += " \
     ${libdir}${QT_DIR_NAME}/qtcreator/.debug \
     ${libdir}${QT_DIR_NAME}/qtcreator/plugins/.debug \
     ${libdir}${QT_DIR_NAME}/qtcreator/plugins/qmldesigner/.debug \
     ${libdir}${QT_DIR_NAME}/qtcreator/plugins/qbs/plugins/.debug \
 "
 
-FILES_${PN}-dev += " \
+FILES:${PN}-dev += " \
     ${libdir}${QT_DIR_NAME}/qtcreator/*${SOLIBSDEV} \
 "
 
-RDEPENDS_${PN} += "perl"
-RCONFLICTS_${PN} = "qt-creator"
+RDEPENDS:${PN} += "perl"
+RCONFLICTS:${PN} = "qt-creator"
 
 # To give best user experience out of the box..
-RRECOMMENDS_${PN} += " \
+RRECOMMENDS:${PN} += " \
     packagegroup-qt5-toolchain-target \
     binutils \
     ccache \

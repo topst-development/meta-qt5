@@ -8,10 +8,10 @@ DEPENDS += "qtbase qtdeclarative"
 PV = "1.0.98+git${SRCPV}"
 
 SRCREV = "8d4580a55ca02b84fc3db374c6530e39c94e0d92"
-SRC_URI = "git://git.merproject.org/mer-core/libconnman-qt.git;protocol=https"
+SRC_URI = "git://git.merproject.org/mer-core/libconnman-qt.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git"
 
 inherit pkgconfig
 
-RDEPENDS_${PN} += "connman"
+RDEPENDS:${PN} += "connman"

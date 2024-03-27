@@ -1,7 +1,7 @@
 require qt5.inc
 require qt5-git.inc
 
-LICENSE = "(LGPL-2.1 & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0)"
+LICENSE = "(LGPL-2.1-only & The-Qt-Company-Qt-LGPL-Exception-1.1 | LGPL-3.0-only)"
 LIC_FILES_CHKSUM = " \
     file://LICENSE.LGPLv21;md5=4bfd28363f541b10d9f024181b8df516 \
     file://LICENSE.LGPLv3;md5=e0459b45c5c4840b353141a8bbed91f0 \
@@ -34,83 +34,83 @@ PACKAGES =. " \
     ${PN}-qt \
 "
 
-FILES_${PN}-assistant = " \
+FILES:${PN}-assistant = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/assistant_*.qm \
 "
 
-FILES_${PN}-designer = " \
+FILES:${PN}-designer = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/designer_*.qm \
 "
 
-FILES_${PN}-linguist = " \
+FILES:${PN}-linguist = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/linguist_*.qm \
 "
 
-FILES_${PN}-qmlviewer = " \
+FILES:${PN}-qmlviewer = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qmlviewer_*.qm \
 "
 
-FILES_${PN}-qtconnectivity = " \
+FILES:${PN}-qtconnectivity = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtconnectivity_*.qm \
 "
 
-FILES_${PN}-qtmultimedia = " \
+FILES:${PN}-qtmultimedia = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtmultimedia_*.qm \
 "
 
-FILES_${PN}-qtlocation = " \
+FILES:${PN}-qtlocation = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtlocation_*.qm \
 "
 
-FILES_${PN}-qtdeclarative = " \
+FILES:${PN}-qtdeclarative = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtdeclarative_*.qm \
 "
 
-FILES_${PN}-qtquickcontrols = " \
+FILES:${PN}-qtquickcontrols = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtquickcontrols_*.qm \
 "
 
-FILES_${PN}-qtquickcontrols2 = " \
+FILES:${PN}-qtquickcontrols2 = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtquickcontrols2_*.qm \
 "
 
-FILES_${PN}-qtwebsockets = " \
+FILES:${PN}-qtwebsockets = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtwebsockets_*.qm \
 "
 
-FILES_${PN}-qtwebengine = " \
+FILES:${PN}-qtwebengine = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtwebengine_*.qm \
 "
 
-FILES_${PN}-qtxmlpatterns = " \
+FILES:${PN}-qtxmlpatterns = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtxmlpatterns_*.qm \
 "
 
-FILES_${PN}-qtconfig = " \
+FILES:${PN}-qtconfig = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtconfig_*.qm \
 "
 
-FILES_${PN}-qtquick1 = " \
+FILES:${PN}-qtquick1 = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtquick1_*.qm \
 "
 
-FILES_${PN}-qtscript = " \
+FILES:${PN}-qtscript = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtscript_*.qm \
 "
 
-FILES_${PN}-qtserialport = " \
+FILES:${PN}-qtserialport = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtserialport_*.qm \
 "
 
-FILES_${PN}-qtbase = " \
+FILES:${PN}-qtbase = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qtbase_*.qm \
 "
 
-FILES_${PN}-qthelp = " \
+FILES:${PN}-qthelp = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qt_help_*.qm \
 "
 
-FILES_${PN}-qt = " \
+FILES:${PN}-qt = " \
     ${OE_QMAKE_PATH_TRANSLATIONS}/qt_*.qm \
 "
 
